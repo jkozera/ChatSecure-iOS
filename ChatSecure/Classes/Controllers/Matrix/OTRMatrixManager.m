@@ -44,7 +44,7 @@
 {
     MXSession *session = [[MXSession alloc] initWithMatrixRestClient:self.mxRestClient];
     [session start:^{
-        [[[OTRDatabaseManager sharedInstance] newConnection] readWriteWithBlock:^(YapDatabaseReadWriteTransaction *  transaction) {
+        [[[OTRDatabaseManager sharedInstance] newConnection] asyncReadWriteWithBlock:^(YapDatabaseReadWriteTransaction *  transaction) {
             
             [self listenToMessages:session];
             
@@ -73,23 +73,47 @@
     for (MXRoom *room in session.rooms) {
         [room listenToEvents:^(MXEvent *event, MXEventDirection direction, MXRoomState *roomState) {
 
-            [[[OTRDatabaseManager sharedInstance] newConnection] readWriteWithBlock:^(YapDatabaseReadWriteTransaction * transaction) {
+            [[[OTRDatabaseManager sharedInstance] newConnection] asyncReadWriteWithBlock:^(YapDatabaseReadWriteTransaction * transaction) {
 //                 [transaction removeAllObjectsInCollection:[[OTRMessage class] collection]];
                 __block bool found = false;
+                
                 [OTRMessage enumerateMessagesWithMessageId:event.eventId
                                                transaction:transaction usingBlock:^(OTRMessage *message, BOOL *stop) {
                                                    found = true;
                                                }];
+                
                 if (!found && event.eventType == MXEventTypeRoomMessage && [event.content[@"msgtype"] isEqualToString:@"m.text"]) {
+                    
+                    
                     OTRMatrixMessage* message = [[OTRMatrixMessage alloc] init];
                     message.messageId = event.eventId;
-                    message.text = event.content[@"body"];
+                    message.text = [event.content[@"body"] stringByTrimmingCharactersInSet:
+                                    [NSCharacterSet whitespaceAndNewlineCharacterSet]];
                     message.incoming = ![event.sender isEqual:session.myUser.userId];
                     message.date = [[NSDate alloc] initWithTimeIntervalSince1970:event.originServerTs/1000];
-                    message.buddyUniqueId = [[OTRBuddy fetchBuddyWithUsername:room.state.roomId
-                                                          withAccountUniqueId:self.account.uniqueId
-                                                                  transaction:transaction] uniqueId];
+                    message.buddyUniqueId =
+                        [[OTRBuddy fetchBuddyWithUsername:room.state.roomId
+                                      withAccountUniqueId:self.account.uniqueId
+                                              transaction:transaction] uniqueId];
                     message.matrixSender = event.sender;
+                    message.delivered = true;
+                    __block OTRMessage *toRemove;
+                    [OTRMessage enumerateMessagesNotMatrixWithTransaction:transaction usingBlock:^(OTRMessage *message2, BOOL *stop) {
+                        // find matching local echo which are stored as OTRMessage instead of
+                        // OTRMatrixMessage
+                        if ([[message2.text
+                              stringByTrimmingCharactersInSet:
+                              [NSCharacterSet whitespaceAndNewlineCharacterSet]]
+                             isEqual:message.text] &&
+                            [message2.buddyUniqueId isEqual:message.buddyUniqueId]) {
+                            toRemove = message2;
+                        }
+                    }];
+                    
+                    if (toRemove) {
+                        [toRemove removeWithTransaction:transaction];
+                    }
+                    
                     [message saveWithTransaction:transaction];
                 }
             }];
@@ -142,5 +166,22 @@
     [self connectWithPassword:password userInitiated:NO];
 }
 
+- (void) sendMessage:(OTRMessage*)message
+{
+    NSString *text = message.text;
+    
+    if (text) {
+        [[OTRDatabaseManager sharedInstance].readWriteDatabaseConnection asyncReadWithBlock:^(YapDatabaseReadTransaction *transaction) {
+            OTRBuddy *buddy = [message buddyWithTransaction:transaction];
+            [_mxRestClient sendTextMessageToRoom:buddy.username
+                                            text:text
+                                         success:^(NSString *eventId) {
+                                             
+                                       } failure:^(NSError *error) {
+                                           
+                                       }];
+        }];
+    }
+}
 
 @end

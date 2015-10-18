@@ -20,6 +20,7 @@
 #import "OTRXMPPTorAccount.h"
 #import "OTRManagedGoogleAccount.h"
 #import "OTRManagedFacebookAccount.h"
+#import "OTRMatrixMessage.h"
 #import "OTRGoogleOAuthXMPPAccount.h"
 #import "OTRAccount.h"
 #import "OTRMessage.h"
@@ -31,6 +32,7 @@
 
 NSString *const OTRYapDatabaseRelationshipName = @"OTRYapDatabaseRelationshipName";
 NSString *const OTRYapDatabseMessageIdSecondaryIndex = @"OTRYapDatabseMessageIdSecondaryIndex";
+NSString *const OTRYapDatabseMessageIdSecondaryIndexIsMatrix = @"OTRYapDatabseMessageIdSecondaryIndexIsMatrix";
 NSString *const OTRYapDatabseMessageIdSecondaryIndexExtension = @"OTRYapDatabseMessageIdSecondaryIndexExtension";
 
 
@@ -193,6 +195,7 @@ NSString *const OTRYapDatabseMessageIdSecondaryIndexExtension = @"OTRYapDatabseM
 {
     YapDatabaseSecondaryIndexSetup *setup = [[YapDatabaseSecondaryIndexSetup alloc] init];
     [setup addColumn:OTRYapDatabseMessageIdSecondaryIndex withType:YapDatabaseSecondaryIndexTypeText];
+    [setup addColumn:OTRYapDatabseMessageIdSecondaryIndexIsMatrix withType:YapDatabaseSecondaryIndexTypeInteger];
     
     YapDatabaseSecondaryIndexHandler *indexHandler = [YapDatabaseSecondaryIndexHandler withObjectBlock:^(NSMutableDictionary *dict, NSString *collection, NSString *key, id object) {
         if ([object isKindOfClass:[OTRMessage class]])
@@ -201,6 +204,12 @@ NSString *const OTRYapDatabseMessageIdSecondaryIndexExtension = @"OTRYapDatabseM
             
             if ([message.messageId length]) {
                 [dict setObject:message.messageId forKey:OTRYapDatabseMessageIdSecondaryIndex];
+            }
+            
+            if ([message isKindOfClass:[OTRMatrixMessage class]]) {
+                [dict setObject:[[NSNumber alloc] initWithInt:1] forKey:OTRYapDatabseMessageIdSecondaryIndexIsMatrix];
+            } else {
+                [dict setObject:[[NSNumber alloc] initWithInt:0] forKey:OTRYapDatabseMessageIdSecondaryIndexIsMatrix];
             }
         }
     }];

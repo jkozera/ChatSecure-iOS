@@ -55,5 +55,6 @@ extern const struct OTRMessageEdges {
 + (void)showLocalNotificationForMessage:(OTRMessage *)message;
 
 + (void)enumerateMessagesWithMessageId:(NSString *)messageId transaction:(YapDatabaseReadTransaction *)transaction usingBlock:(void (^)(OTRMessage *message,BOOL *stop))block;
++ (void)enumerateMessagesNotMatrixWithTransaction:(YapDatabaseReadTransaction *)transaction usingBlock:(void (^)(OTRMessage *message,BOOL *stop))block;
 
 @end

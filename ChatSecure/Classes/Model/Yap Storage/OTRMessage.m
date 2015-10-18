@@ -195,4 +195,20 @@ const struct OTRMessageEdges OTRMessageEdges = {
     }    
 }
 
++ (void)enumerateMessagesNotMatrixWithTransaction:(YapDatabaseReadTransaction *)transaction usingBlock:(void (^)(OTRMessage *message,BOOL *stop))block;
+{
+    if (block) {
+        NSString *queryString = [NSString stringWithFormat:@"Where %@ = ?",OTRYapDatabseMessageIdSecondaryIndexIsMatrix];
+        YapDatabaseQuery *query = [YapDatabaseQuery queryWithFormat:queryString,[[NSNumber alloc] initWithInt:0]];
+        
+        [[transaction ext:OTRYapDatabseMessageIdSecondaryIndexExtension] enumerateKeysMatchingQuery:query usingBlock:^(NSString *collection, NSString *key, BOOL *stop) {
+            OTRMessage *message = [OTRMessage fetchObjectWithUniqueID:key transaction:transaction];
+            if (message) {
+                block(message,stop);
+            }
+        }];
+        
+    }
+}
+
 @end
