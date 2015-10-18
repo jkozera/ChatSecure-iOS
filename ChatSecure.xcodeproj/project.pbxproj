@@ -23,6 +23,7 @@
 		9E5918F01BCB12A500EF3224 /* OTRMatrixMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5918EE1BCB12A500EF3224 /* OTRMatrixMessage.m */; };
 		9E5918F71BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E5918F51BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.h */; };
 		9E5918F81BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5918F61BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.m */; };
+		9E5918FC1BCC472600EF3224 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9E5918FB1BCC472600EF3224 /* Localizable.strings */; };
 		BB852C4F65587CD8A46FF428 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD1F8E85C658C8D3865B584 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D9227C241BA78E6B00B5E1D0 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9227C231BA78E6B00B5E1D0 /* FontAwesome.ttf */; };
 		D9227C2D1BA7952100B5E1D0 /* ChatSecureCore.h in Headers */ = {isa = PBXBuildFile; fileRef = D9227C2C1BA7952100B5E1D0 /* ChatSecureCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -868,6 +869,7 @@
 		9E5918EE1BCB12A500EF3224 /* OTRMatrixMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTRMatrixMessage.m; sourceTree = "<group>"; };
 		9E5918F51BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OTRMatrixMessage+JSQMessageData.h"; sourceTree = "<group>"; };
 		9E5918F61BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OTRMatrixMessage+JSQMessageData.m"; sourceTree = "<group>"; };
+		9E5918FB1BCC472600EF3224 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		B977533C20F88A4A840303F9 /* Pods.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.beta.xcconfig; path = "Pods/Target Support Files/Pods/Pods.beta.xcconfig"; sourceTree = "<group>"; };
 		CCD1F8E85C658C8D3865B584 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D913A56C1B747B62006C5ACD /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Onboarding.storyboard; path = Interface/Onboarding.storyboard; sourceTree = "<group>"; };
@@ -1434,6 +1436,7 @@
 			children = (
 				633104D71A169EE600C17BAE /* Resources */,
 				6396AF9D1A169D54009F3E6C /* Supporting Files */,
+				9E5918FB1BCC472600EF3224 /* Localizable.strings */,
 			);
 			path = ChatSecure;
 			sourceTree = "<group>";
@@ -2003,6 +2006,9 @@
 							com.apple.DataProtection = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					6396AFB21A169D54009F3E6C = {
@@ -2083,6 +2089,7 @@
 				D9227C241BA78E6B00B5E1D0 /* FontAwesome.ttf in Resources */,
 				6331072C1A16D1F200C17BAE /* Images.xcassets in Resources */,
 				D973D7061A2D4094004D353E /* Pods-acknowledgements.plist in Resources */,
+				9E5918FC1BCC472600EF3224 /* Localizable.strings in Resources */,
 				D9365E7A1A1EB0050006434A /* torrc in Resources */,
 				6331072B1A16D1F200C17BAE /* DemoImages.xcassets in Resources */,
 				633107201A16D1A300C17BAE /* LaunchScreen.xib in Resources */,

@@ -47,6 +47,7 @@
 #pragma mark Theming
 
 @property (nonatomic, strong, readonly) OTRTheme *theme;
+@property NSData* devToken;
 /** Override this in subclass to use a different theme class */
 - (Class) themeClass;
 

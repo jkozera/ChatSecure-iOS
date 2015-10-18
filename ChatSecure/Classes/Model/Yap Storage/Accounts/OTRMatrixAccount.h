@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSString *homeURL;
 @property (nonatomic, strong) NSString *identityURL;
+@property (nonatomic, strong) NSString *pushURL;
 
 @end

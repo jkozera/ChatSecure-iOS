@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  ChatSecure
+
+  Created by Jerzy K on 12/10/15.
+  Copyright © 2015 Chris Ballinger. All rights reserved.
+*/
+
+"MSG_FROM_USER_WITH_CONTENT" = "%@: %@";

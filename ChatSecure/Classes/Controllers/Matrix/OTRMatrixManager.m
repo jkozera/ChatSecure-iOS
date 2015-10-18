@@ -152,6 +152,29 @@
           postNotificationName:kOTRProtocolLoginSuccess object:self];
          
          [self fetchBuddies];
+         
+         OTRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+         if (delegate.devToken) {
+             NSString *b64Token = [delegate.devToken base64EncodedStringWithOptions:0];
+             NSDictionary *pushData = @{@"url": self.account.pushURL};
+             NSString *deviceLang = [NSLocale preferredLanguages][0];
+             NSString *profileTag = @"0000000000000000";
+             [_mxRestClient
+              setPusherWithPushkey:b64Token
+              kind:@"http"
+              appId:[[NSBundle mainBundle] bundleIdentifier]
+              appDisplayName:@"ChatSecure"
+              deviceDisplayName:[[UIDevice currentDevice] name]
+              profileTag:profileTag
+              lang:deviceLang
+              data:pushData
+              append:false
+              success:^{
+                  // Hooray!
+              } failure:^(NSError *error) {
+                  // Some super awesome error handling goes here
+              }];
+        }
      } failure:^(NSError *error) {
          //
      }];
@@ -182,6 +205,15 @@
                                        }];
         }];
     }
+}
+
+- (void) disconnect
+{
+    [_mxRestClient setPresence:MXPresenceOffline andStatusMessage:@"" success:^{
+        //
+    } failure:^(NSError *error) {
+        //
+    }];
 }
 
 @end

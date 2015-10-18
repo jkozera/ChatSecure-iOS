@@ -140,9 +140,11 @@ static CGFloat kOTRConversationCellHeight = 80.0;
     __block BOOL hasAccounts = NO;
     /* [[OTRDatabaseManager sharedInstance].readWriteDatabaseConnection
         readWriteWithBlock:^(YapDatabaseReadWriteTransaction * transaction) {
+            [transaction removeAllObjectsInCollection:[OTRAccount collection]];
             OTRMatrixAccount *account = [[OTRMatrixAccount alloc] init];
             account.homeURL = @"https://jersey.sandcats.io:8448";
             account.identityURL = @"https://jersey.sandcats.io:8090";
+            account.pushURL = @"https://jersey.sandcats.io/_matrix/push/v1/notify";
             account.autologin = true;
             account.rememberPassword = true;
             account.username = @"jerzy";
