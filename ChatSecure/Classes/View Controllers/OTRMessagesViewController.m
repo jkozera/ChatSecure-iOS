@@ -14,6 +14,7 @@
 
 #import "OTRBuddy.h"
 #import "OTRAccount.h"
+#import "OTRMatrixAccount.h"
 #import "OTRMessage+JSQMessageData.h"
 #import "JSQMessages.h"
 #import "OTRProtocolManager.h"
@@ -707,6 +708,26 @@ typedef NS_ENUM(int, OTRDropDownType) {
     return showDate;
 }
 
+- (BOOL)showSenderAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (![self.account isKindOfClass:[OTRMatrixAccount class]]) {
+        return NO;
+    }
+    BOOL showSender = NO;
+    if (indexPath.row == 0) {
+        showSender = YES;
+    }
+    else {
+        OTRMessage *currentMessage = [self messageAtIndexPath:indexPath];
+        OTRMessage *previousMessage = [self messageAtIndexPath:[NSIndexPath indexPathForItem:indexPath.row-1 inSection:indexPath.section]];
+        
+        if (![[currentMessage senderDisplayName] isEqual:[previousMessage senderDisplayName]]) {
+            showSender = YES;
+        }
+    }
+    return showSender;
+}
+
 - (void)receivedTextViewChangedNotification:(NSNotification *)notification
 {
     //implemented in subclasses
@@ -1120,10 +1141,25 @@ typedef NS_ENUM(int, OTRDropDownType) {
     return nil;
 }
 
+- (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self showSenderAtIndexPath:indexPath]) {
+        return kJSQMessagesCollectionViewCellLabelHeightDefault;
+    }
+    return 0.0f;
+}
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    if ([self showSenderAtIndexPath:indexPath]) {
+        OTRMessage *message = [self messageAtIndexPath:indexPath];
+        UIFont* font = [UIFont systemFontOfSize:12];
+        return [[NSAttributedString alloc] initWithString:[message senderDisplayName]
+                                               attributes:@{NSFontAttributeName: font}];
+        
+    } else {
+        return nil;
+    }
 }
 
 

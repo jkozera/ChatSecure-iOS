@@ -19,6 +19,10 @@
 		9E5918DF1BC9D81A00EF3224 /* OTRMatrixAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5918DD1BC9D81A00EF3224 /* OTRMatrixAccount.m */; };
 		9E5918E71BCA021C00EF3224 /* OTRMatrixManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E5918E51BCA021C00EF3224 /* OTRMatrixManager.h */; };
 		9E5918E81BCA021C00EF3224 /* OTRMatrixManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5918E61BCA021C00EF3224 /* OTRMatrixManager.m */; };
+		9E5918EF1BCB12A500EF3224 /* OTRMatrixMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E5918ED1BCB12A500EF3224 /* OTRMatrixMessage.h */; };
+		9E5918F01BCB12A500EF3224 /* OTRMatrixMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5918EE1BCB12A500EF3224 /* OTRMatrixMessage.m */; };
+		9E5918F71BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E5918F51BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.h */; };
+		9E5918F81BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5918F61BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.m */; };
 		BB852C4F65587CD8A46FF428 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD1F8E85C658C8D3865B584 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D9227C241BA78E6B00B5E1D0 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9227C231BA78E6B00B5E1D0 /* FontAwesome.ttf */; };
 		D9227C2D1BA7952100B5E1D0 /* ChatSecureCore.h in Headers */ = {isa = PBXBuildFile; fileRef = D9227C2C1BA7952100B5E1D0 /* ChatSecureCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -860,6 +864,10 @@
 		9E5918DD1BC9D81A00EF3224 /* OTRMatrixAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTRMatrixAccount.m; sourceTree = "<group>"; };
 		9E5918E51BCA021C00EF3224 /* OTRMatrixManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTRMatrixManager.h; path = Matrix/OTRMatrixManager.h; sourceTree = "<group>"; };
 		9E5918E61BCA021C00EF3224 /* OTRMatrixManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OTRMatrixManager.m; path = Matrix/OTRMatrixManager.m; sourceTree = "<group>"; };
+		9E5918ED1BCB12A500EF3224 /* OTRMatrixMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTRMatrixMessage.h; sourceTree = "<group>"; };
+		9E5918EE1BCB12A500EF3224 /* OTRMatrixMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTRMatrixMessage.m; sourceTree = "<group>"; };
+		9E5918F51BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OTRMatrixMessage+JSQMessageData.h"; sourceTree = "<group>"; };
+		9E5918F61BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OTRMatrixMessage+JSQMessageData.m"; sourceTree = "<group>"; };
 		B977533C20F88A4A840303F9 /* Pods.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.beta.xcconfig; path = "Pods/Target Support Files/Pods/Pods.beta.xcconfig"; sourceTree = "<group>"; };
 		CCD1F8E85C658C8D3865B584 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D913A56C1B747B62006C5ACD /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Onboarding.storyboard; path = Interface/Onboarding.storyboard; sourceTree = "<group>"; };
@@ -1156,6 +1164,10 @@
 				633105D31A16D1A300C17BAE /* OTRXMPPPresenceSubscriptionRequest.m */,
 				633105D41A16D1A300C17BAE /* OTRYapDatabaseObject.h */,
 				633105D51A16D1A300C17BAE /* OTRYapDatabaseObject.m */,
+				9E5918ED1BCB12A500EF3224 /* OTRMatrixMessage.h */,
+				9E5918EE1BCB12A500EF3224 /* OTRMatrixMessage.m */,
+				9E5918F51BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.h */,
+				9E5918F61BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.m */,
 			);
 			path = "Yap Storage";
 			sourceTree = "<group>";
@@ -1685,6 +1697,7 @@
 				D93DDB361BA79A7000CD8331 /* OTRAccountsManager.h in Headers */,
 				D93DDB371BA79A7100CD8331 /* OTRDatabaseManager.h in Headers */,
 				D93DDB381BA79A7100CD8331 /* OTRDatabaseView.h in Headers */,
+				9E5918EF1BCB12A500EF3224 /* OTRMatrixMessage.h in Headers */,
 				D93DDB391BA79A7100CD8331 /* OTREncryptionManager.h in Headers */,
 				9E5918E71BCA021C00EF3224 /* OTRMatrixManager.h in Headers */,
 				D93DDB3B1BA79A7100CD8331 /* OTROAuthRefresher.h in Headers */,
@@ -1794,6 +1807,7 @@
 				D93DDBA31BA79AA500CD8331 /* OTRInviteViewController.h in Headers */,
 				D93DDBA41BA79AA600CD8331 /* OTRAddBuddyQRCodeViewController.h in Headers */,
 				D93DDBA51BA79AA700CD8331 /* OTRQRCodeReaderDelegate.h in Headers */,
+				9E5918F71BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.h in Headers */,
 				D93DDBA61BA79AA800CD8331 /* OTRBaseLoginViewController.h in Headers */,
 				D93DDBA71BA79AA900CD8331 /* OTRXLFormCreator.h in Headers */,
 				D93DDBA81BA79AAA00CD8331 /* OTRXMPPServerListViewController.h in Headers */,
@@ -2368,6 +2382,7 @@
 				D93DDAD91BA79A2700CD8331 /* OTRStreamManagementStorageObject.m in Sources */,
 				D93DDADA1BA79A2700CD8331 /* OTRBuddy.m in Sources */,
 				D93DDADB1BA79A2700CD8331 /* OTRMessage+JSQMessageData.m in Sources */,
+				9E5918F01BCB12A500EF3224 /* OTRMatrixMessage.m in Sources */,
 				D93DDADC1BA79A2700CD8331 /* OTRMessage.m in Sources */,
 				D93DDADD1BA79A2700CD8331 /* OTRXMPPBuddy.m in Sources */,
 				D93DDADE1BA79A2700CD8331 /* OTRXMPPPresenceSubscriptionRequest.m in Sources */,
@@ -2399,6 +2414,7 @@
 				D93DDAFA1BA79A2900CD8331 /* OTRAcknowledgementsViewController.m in Sources */,
 				D93DDAFB1BA79A2900CD8331 /* OTRBuddyViewController.m in Sources */,
 				D93DDAFC1BA79A2900CD8331 /* OTRCertificateDomainViewController.m in Sources */,
+				9E5918F81BCB12F000EF3224 /* OTRMatrixMessage+JSQMessageData.m in Sources */,
 				D93DDAFD1BA79A2900CD8331 /* OTRCertificatesViewController.m in Sources */,
 				D93DDAFE1BA79A2900CD8331 /* OTRChangeDatabasePassphraseViewController.m in Sources */,
 				D93DDAFF1BA79A2900CD8331 /* OTRChooseAccountViewController.m in Sources */,

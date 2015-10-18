@@ -11,7 +11,7 @@
 #import "OTRDatabaseManager.h"
 #import "OTRNotificationController.h"
 #import "OTRBuddy.h"
-#import "OTRMessage.h"
+#import "OTRMatrixMessage.h"
 
 @implementation OTRMatrixManager
 
@@ -74,14 +74,14 @@
         [room listenToEvents:^(MXEvent *event, MXEventDirection direction, MXRoomState *roomState) {
 
             [[[OTRDatabaseManager sharedInstance] newConnection] readWriteWithBlock:^(YapDatabaseReadWriteTransaction * transaction) {
-                // [transaction removeAllObjectsInCollection:[[OTRMessage class] collection]];
+//                 [transaction removeAllObjectsInCollection:[[OTRMessage class] collection]];
                 __block bool found = false;
                 [OTRMessage enumerateMessagesWithMessageId:event.eventId
                                                transaction:transaction usingBlock:^(OTRMessage *message, BOOL *stop) {
                                                    found = true;
                                                }];
                 if (!found && event.eventType == MXEventTypeRoomMessage && [event.content[@"msgtype"] isEqualToString:@"m.text"]) {
-                    OTRMessage* message = [[OTRMessage alloc] init];
+                    OTRMatrixMessage* message = [[OTRMatrixMessage alloc] init];
                     message.messageId = event.eventId;
                     message.text = event.content[@"body"];
                     message.incoming = ![event.sender isEqual:session.myUser.userId];
@@ -89,6 +89,7 @@
                     message.buddyUniqueId = [[OTRBuddy fetchBuddyWithUsername:room.state.roomId
                                                           withAccountUniqueId:self.account.uniqueId
                                                                   transaction:transaction] uniqueId];
+                    message.matrixSender = event.sender;
                     [message saveWithTransaction:transaction];
                 }
             }];
