@@ -5,7 +5,7 @@
 //  Created by David Chiles on 3/2/14.
 //  Copyright (c) 2014 Chris Ballinger. All rights reserved.
 //
-
+#import "OTRMatrixAccount.h"
 #import "OTRConversationViewController.h"
 
 #import "OTRSettingsViewController.h"
@@ -138,6 +138,17 @@ static CGFloat kOTRConversationCellHeight = 80.0;
         return;
     }
     __block BOOL hasAccounts = NO;
+    /* [[OTRDatabaseManager sharedInstance].readWriteDatabaseConnection
+        readWriteWithBlock:^(YapDatabaseReadWriteTransaction * transaction) {
+            OTRMatrixAccount *account = [[OTRMatrixAccount alloc] init];
+            account.homeURL = @"https://jersey.sandcats.io:8448";
+            account.identityURL = @"https://jersey.sandcats.io:8090";
+            account.autologin = true;
+            account.rememberPassword = true;
+            account.username = @"jerzy";
+            [account setPassword:@"[your password here]"];
+            [account saveWithTransaction:transaction];
+        }]; */
     [[OTRDatabaseManager sharedInstance].readOnlyDatabaseConnection readWithBlock:^(YapDatabaseReadTransaction *transaction) {
         NSUInteger count = [transaction numberOfKeysInCollection:[OTRAccount collection]];
         if (count > 0) {

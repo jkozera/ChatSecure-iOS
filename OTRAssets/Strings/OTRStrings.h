@@ -58,6 +58,7 @@
 #define PENDING_APPROVAL_STRING [OTRLanguageManager translatedString: @"Pending Approval"]
 #define errSSLPeerDecryptionFailString [OTRLanguageManager translatedString: @"Decryption failed"]
 #define JABBER_STRING [OTRLanguageManager translatedString: @"Jabber (XMPP)"]
+#define MATRIX_STRING [OTRLanguageManager translatedString: @"Matrix"]
 #define VERIFY_STRING [OTRLanguageManager translatedString: @"Verify"]
 #define errSSLCertExpiredString [OTRLanguageManager translatedString: @"Chain had an expired cert"]
 #define errSSLBadConfigurationString [OTRLanguageManager translatedString: @"Configuration error"]

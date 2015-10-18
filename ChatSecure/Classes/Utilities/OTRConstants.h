@@ -34,6 +34,7 @@ extern NSString *const kOTRProtocolLoginUserInitiated;
 extern NSString *const kOTRGoogleTalkDomain;
 extern NSString *const kOTRProtocolTypeXMPP;
 extern NSString *const kOTRProtocolTypeAIM;
+extern NSString *const kOTRProtocolTypeMatrix;
 
 extern NSString *const kOTRNotificationAccountNameKey;
 extern NSString *const kOTRNotificationUserNameKey;

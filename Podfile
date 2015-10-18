@@ -76,4 +76,4 @@ pod 'YapDatabase/SQLCipher', :path => 'Submodules/YapDatabase/YapDatabase.podspe
 pod 'IOCipher/GCDWebServer', :path => 'Submodules/IOCipher/IOCipher.podspec'
 pod 'ParkedTextField', :path => 'Submodules/ParkedTextField/ParkedTextField.podspec'
 pod 'XLForm', :path => 'Submodules/XLForm/XLForm.podspec'
-
+pod 'MatrixSDK', :git => 'https://github.com/matrix-org/matrix-ios-sdk.git', :branch => 'develop'

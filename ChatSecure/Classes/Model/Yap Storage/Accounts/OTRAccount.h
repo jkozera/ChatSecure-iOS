@@ -15,7 +15,8 @@ typedef NS_ENUM(int, OTRAccountType) {
     OTRAccountTypeGoogleTalk  = 2,
     OTRAccountTypeJabber      = 3,
     OTRAccountTypeAIM         = 4,
-    OTRAccountTypeXMPPTor     = 5
+    OTRAccountTypeXMPPTor     = 5,
+    OTRAccountTypeMatrix      = 6
 };
 
 extern NSString *const OTRAimImageName;

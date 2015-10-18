@@ -33,6 +33,7 @@ NSString *const kOTRProtocolLoginUserInitiated             = @"kOTRProtocolLogin
 NSString *const kOTRGoogleTalkDomain = @"talk.google.com";
 NSString *const kOTRProtocolTypeXMPP = @"xmpp";
 NSString *const kOTRProtocolTypeAIM  = @"prpl-oscar";
+NSString *const kOTRProtocolTypeMatrix = @"matrix";
 
 NSString *const kOTRNotificationAccountNameKey   = @"kOTRNotificationAccountNameKey";
 NSString *const kOTRNotificationUserNameKey      = @"kOTRNotificationUserNameKey";

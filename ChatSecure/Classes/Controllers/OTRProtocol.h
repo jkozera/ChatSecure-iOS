@@ -25,7 +25,8 @@
 typedef NS_ENUM(int, OTRProtocolType) {
     OTRProtocolTypeNone        = 0,
     OTRProtocolTypeXMPP        = 1,
-    OTRProtocolTypeOscar       = 2
+    OTRProtocolTypeOscar       = 2,
+    OTRProtocolTypeMatrix      = 3
 };
 
 typedef NS_ENUM(NSInteger, OTRProtocolConnectionStatus) {

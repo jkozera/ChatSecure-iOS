@@ -63,9 +63,12 @@ PODS:
   - libsqlfs/SQLCipher (1.3):
     - libsqlfs/common
     - SQLCipher/fts
-  - Mantle (2.0.4):
-    - Mantle/extobjc (= 2.0.4)
-  - Mantle/extobjc (2.0.4)
+  - Mantle (2.0.5):
+    - Mantle/extobjc (= 2.0.5)
+  - Mantle/extobjc (2.0.5)
+  - MatrixSDK (0.5.3):
+    - AFNetworking (~> 2.6.0)
+    - Mantle (~> 2.0.5)
   - MBProgressHUD (0.9.1)
   - MWFeedParser (1.0.1):
     - MWFeedParser/FeedParser (= 1.0.1)
@@ -269,6 +272,7 @@ DEPENDENCIES:
   - JVFloatLabeledTextField (~> 1.0)
   - KVOController (~> 1.0)
   - Mantle (~> 2.0)
+  - MatrixSDK (from `https://github.com/matrix-org/matrix-ios-sdk.git`, branch `develop`)
   - MBProgressHUD (~> 0.9)
   - MWFeedParser (~> 1.0)
   - Navajo (~> 0.0)
@@ -303,6 +307,9 @@ EXTERNAL SOURCES:
   JSQMessagesViewController:
     :branch: 7.1.0-send_button
     :git: https://github.com/ChatSecure/JSQMessagesViewController
+  MatrixSDK:
+    :branch: develop
+    :git: https://github.com/matrix-org/matrix-ios-sdk.git
   OTRKit:
     :path: Submodules/OTRKit/OTRKit.podspec
   ParkedTextField:
@@ -325,6 +332,9 @@ CHECKOUT OPTIONS:
   JSQMessagesViewController:
     :commit: aced19e84fe5ecfac7e89db2b247dfbd505127cb
     :git: https://github.com/ChatSecure/JSQMessagesViewController
+  MatrixSDK:
+    :commit: 56bfc717ab52b404355daafddacd3511070f37fd
+    :git: https://github.com/matrix-org/matrix-ios-sdk.git
   SIAlertView:
     :commit: e9a1a7d7d5a2a4ef5ff2e2e548644222b14edb27
     :git: https://github.com/ChatSecure/SIAlertView.git
@@ -351,7 +361,8 @@ SPEC CHECKSUMS:
   JVFloatLabeledTextField: ea4a3d8387ddd43724c472bb2b8ab39b79af05d4
   KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
   libsqlfs: 179e4fb40b8c07fd0ee7933ec4c0b9f4815cbd0e
-  Mantle: 6bee68168423948be0c0c5924832bf3af188e099
+  Mantle: 1912395033f601de5adc8ee91e48f46e4c7051ad
+  MatrixSDK: 244331cb6e6b6f845e897a526c0a918b0dffce31
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MWFeedParser: 2cf646014c1baf6ad1b08c480b40a08180079247
   Navajo: 5fb68239b4e3af4610f31925bae1ca8e6bab8eaa
@@ -374,4 +385,4 @@ SPEC CHECKSUMS:
   YapDatabase: 814f9ff862a95c1e581d93335a4020482b69155b
   ZXingObjC: bf15b3814f7a105b6d99f47da2333c93a063650a
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0
