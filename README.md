@@ -1,3 +1,17 @@
+# Information about this branch (jkozera/matrix-org)
+
+This is a very early stage pre-alpha initial proof of concept of integrating [Matrix](http://matrix.org/) into the ChatSecure's iOS client.
+
+![screenshot](http://i.imgur.com/ETF5gXK.png)
+
+It supports very basic/flaky receiving and sending of messages, proves that APNs works, but does not support many fundamental features like logging in (server and login data is hardcoded in `OTRMessagesViewController.m`).
+
+Currently it would need some decision on how the development should progress - there are two possibilities:
+
+ 1. Continue hacking Matrix support into existing ChatSecure client databases and Objective C code. This could perhaps allow easier integration with OTR, but it requires potentially lots of work to get basic stable messaging functionality in place.
+ 2. Replace the whole `OTRMessagesViewController` with one from [matrix-ios-kit](https://github.com/matrix-org/matrix-ios-kit). This should provide basic messaging for free, and allows benefiting from all enhancements of matrix-ios-kit. However, adding OTR support would probably be harder to add this way, and probably in general the Matrix functionality is going to look out of place if implemented this way.
+
+
 # [ChatSecure](https://github.com/ChatSecure/ChatSecure-iOS)
 
 [![Build Status](https://travis-ci.org/ChatSecure/ChatSecure-iOS.svg?branch=master)](https://travis-ci.org/ChatSecure/ChatSecure-iOS)
